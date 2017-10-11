@@ -13,6 +13,7 @@ public class main {
             System.out.println("5) Matrix Multiplication");
             System.out.println("6) Scalar Multiplication");
             System.out.println("7) Reduced-Row Echelon Form");
+            System.out.println("8) Inverse");
             int userInput = in.nextInt(); // depending on input, move to relevant part of code
             if(userInput == 2) { //Determinant
                 in = new Scanner(System.in);
@@ -45,6 +46,232 @@ public class main {
                     System.out.print(firstSums);
                     System.out.println("The determinant is: " + (firstSums - secondSums));
                 }
+            } 
+            if(userInput == 3) {
+                System.out.println("Enter number of rows and columns");
+                int row = in.nextInt();
+                int column = in.nextInt();
+                int[][] matrix1 = new int[row][column];
+                    for (int i = 0; i < row; i++) {
+                        System.out.print("Matrix 1: " + "Enter " + column + " values for row " + i);
+                        for (int j = 0; j < column; j++) {
+                            matrix1[i][j] = in.nextInt();
+                        }
+                    }
+
+                int[][] matrix2 = new int[row][column];
+                for (int i = 0; i < row; i++) {
+                    System.out.print("Matrix 2: " + "Enter " + column + " values for row " + i);
+                    for (int j = 0; j < column; j++) {
+                        matrix2[i][j] = in.nextInt();
+                    }
+                }
+
+                System.out.println("This is the sum");
+                for (int i = 0; i < row; i++) {
+                    for (int j = 0; j < column; j++) {
+                    matrix1[i][j] += matrix2[i][j];
+                    }
+                }
+        
+                // alignment code
+                int[] columnLength = new int[column];
+        
+                for (int i = 0; i < column; i++) {
+                    String firstEntry = matrix1[0][i] + "";
+                    int maxLength = firstEntry.length();
+                    for (int j = 0; j < row; j++) {
+                        String compare = matrix1[j][i] + "";
+                        maxLength = Math.max(maxLength, compare.length());
+                    }
+                columnLength[i] = maxLength;
+                }   
+        
+                for (int i = 0; i < row; i++) {
+                    for (int j = 0; j < column; j++) {
+                        System.out.print(matrix1[i][j]);
+                        String placeHolder = matrix1[i][j] + "";
+                        int k = 0;
+                        while(placeHolder.length() + k <= columnLength[j]) {
+                        System.out.print(" ");
+                        k++;
+                        }
+                    }
+                System.out.println();
+                }
+            }
+            if(userInput == 4) {
+                System.out.println("Enter number of rows and columns");
+                int row = in.nextInt();
+                int column = in.nextInt();
+        
+                System.out.println("This program calculates Matrix 1 - Matrix 2");
+                int[][] matrix1 = new int[row][column];
+        
+                for (int i = 0; i < row; i++){
+                    System.out.print("Matrix 1: " + "Enter " + column + " values for row " + i);
+                    for (int j = 0; j < column; j++) {
+                        matrix1[i][j] = in.nextInt();
+                    }
+                }
+
+                int[][] matrix2 = new int[row][column];
+
+                for (int i = 0; i < row; i++){
+                    System.out.print("Matrix 2: " + "Enter " + column + " values for row " + i);
+                    for (int j = 0; j < column; j++) {
+                        matrix2[i][j] = in.nextInt();
+                    }
+                }
+
+                System.out.println("This is the difference");
+                for (int i = 0; i < row; i++) {
+                    for (int j = 0; j < column; j++) {
+                        matrix1[i][j] = matrix1[i][j] - matrix2[i][j];
+                    }
+                }
+
+                // alignment code
+                int[] columnLength = new int[column];
+        
+                for (int i = 0; i < column; i++){
+                    String firstEntry = matrix1[0][i] + "";
+                    int maxLength = firstEntry.length();
+                    for (int j = 0; j < row; j++) {
+                        String compare = matrix1[j][i] + "";
+                        maxLength = Math.max(maxLength, compare.length());
+                    }
+                columnLength[i] = maxLength;
+                }   
+        
+                for (int i = 0; i < row; i++){
+                    for (int j = 0; j < column; j++){
+                        System.out.print(matrix1[i][j]);
+                        String placeHolder = matrix1[i][j] + "";
+                        int k = 0;
+                        while(placeHolder.length() + k <= columnLength[j]){
+                            System.out.print(" ");
+                            k++;
+                        }
+                    }
+                System.out.println();
+                }
+            }
+            if(userInput == 5) {
+                System.out.println("Matrix 1: Enter number of rows and columns");
+                int row1 = in.nextInt();
+                int column1 = in.nextInt();
+
+                int[][] matrix1 = new int[row1][column1];
+
+                for (int i = 0; i < row1; i++) {
+                    System.out.print("Matrix 1: " + "Enter " + column1 + " values for row " + (i+1));
+                    for (int j = 0; j < column1; j++) {
+                        matrix1[i][j] = in.nextInt();
+                    }  
+                }
+
+                System.out.println("Matrix 2: Enter number of rows and columns");
+                int row2 = in.nextInt();
+                int column2 = in.nextInt();
+                int[][] matrix2 = new int[row2][column2];
+
+                for (int i = 0; i < row2; i++) {
+                    System.out.print("Matrix 2: " + "Enter " + column2 + " values for row " + (i + 1));
+                    for (int j = 0; j < column2; j++) {
+                        matrix2[i][j] = in.nextInt();
+                    }
+                }
+
+                if (column1 == row2) {
+                    int[][] product = new int[row1][column2]; 
+                    for (int i = 0; i < row1; i++) {
+                        for (int j = 0; j < column2; j++) {
+                        int sum = 0;
+                            for (int k = 0; k < column1; k++) {
+                                sum += matrix1[i][k] * matrix2[k][j];
+                            }
+                        product[i][j] = sum;
+                        }
+                    }
+
+                    // alignment code
+                    int[] columnLength = new int[column2];
+
+                    for (int i = 0; i < column2; i++) {
+                        String firstEntry = product[0][i] + "";
+                        int maxLength = firstEntry.length();
+                        for (int j = 0; j < row1; j++) {
+                            String compare = product[j][i] + "";
+                            maxLength = Math.max(maxLength, compare.length());
+                        }
+                        columnLength[i] = maxLength;
+                    }   
+
+                    for (int i = 0; i < row1; i++){
+                        for (int j = 0; j < column2; j++){
+                            System.out.print(product[i][j]);
+                            String placeHolder = product[i][j] + "";
+                            int k = 0;
+                            while(placeHolder.length() + k <= columnLength[j]){
+                                System.out.print(" ");
+                                k++;
+                            }
+                        }
+                        System.out.println();
+                    }
+                } else {
+                    System.out.println("Cannot be multplied");
+                }
+            }
+            if(userInput == 6) {
+                System.out.println("Enter number of rows and columns");
+                int row = in.nextInt();
+                int column = in.nextInt();
+                
+                int[][] matrix = new int[row][column];
+                
+                for (int i = 0; i < row; i++) {
+                    System.out.println("Enter " + column + " values for row " + i);
+                    for (int j = 0; j < column; j++) {
+                    matrix[i][j] = in.nextInt();
+                    }
+                }
+         
+                System.out.println("Enter scalar to multply with matrix");
+                int scalar = in.nextInt();
+                // multplies scalar to each entry
+                for (int i = 0; i < row; i++) {
+                    for (int j = 0; j < column; j++) {
+                        matrix[i][j] *= scalar;
+                    }
+                }
+        
+                // alignment code
+                int[] columnLength = new int[column];
+        
+                for (int i = 0; i < column; i++) {
+                    String firstEntry = matrix[0][i] + "";
+                    int maxLength = firstEntry.length();
+                    for (int j = 0; j < row; j++) {
+                        String compare = matrix[j][i] + "";
+                        maxLength = Math.max(maxLength, compare.length());
+                    }
+                    columnLength[i] = maxLength;
+                }   
+            
+                for (int i = 0; i < row; i++) {
+                    for (int j = 0; j < column; j++) {
+                    System.out.print(matrix[i][j]);
+                    String placeHolder = matrix[i][j] + "";
+                    int k = 0;
+                        while(placeHolder.length() + k <= columnLength[j]) {
+                            System.out.print(" ");
+                            k++;
+                        }
+                    }
+                    System.out.println();
+                }
             }
             if(userInput == 7) {
                 in = new Scanner(System.in);
@@ -64,13 +291,33 @@ public class main {
                         matrix[i][j] = in.nextDouble();
                     }
                 }
+                double[][] temp = matrix.clone();
+                for (int i = 0; i < rows; i++) {
+                    if (matrix[i][i] == 0) {
+                        for (int j = 0; j < rows; j++) {
+                            if (matrix [j][i] != 0) {
+                                double tmpRow[] = matrix[i];
+                                matrix[i] = matrix[j];
+                                matrix[j] = tmpRow;
+                            }
+                        }
+                    }
+                }
                 for(int i = 0; i < columns - 1; i++) {
                     for(int j = 0 ; j < rows; j++) {
-                        double pivot = matrix[j][i] / matrix [i][i];
-                        for(int k = 0; k < rows; k++) {
+                        double pivot = matrix[j][i] / matrix[i][i];
+                        for(int k = 0; k < columns; k++) {
+                            if(i != j) {
                                 matrix[j][k] = matrix[j][k] - matrix[i][k] * pivot;
+                            }
                         }
                     }            
+                }
+                for(int i = 0; i < rows; i++) {
+                    double pivot = matrix[i][i];
+                    for(int j = 0; j < columns; j++) {
+                        matrix[i][j] = matrix[i][j] / pivot;
+                    }
                 }
                 for(int i = 0; i < rows; i++) {
                     for(int j = 0; j < columns; j++) {
