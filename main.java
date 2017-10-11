@@ -11,10 +11,58 @@ public class main {
             System.out.println("3) Matrix Addition");
             System.out.println("4) Matrix Subtraction");
             System.out.println("5) Matrix Multiplication");
-            System.out.println("6) Scalar Multiplication");
-            System.out.println("7) Reduced-Row Echelon Form");
-            System.out.println("8) Inverse");
+            System.out.println("6) Reduced-Row Echelon Form");
+            System.out.println("7) Inverse");
             int userInput = in.nextInt(); // depending on input, move to relevant part of code
+            if(userInput == 1) {
+                System.out.println("Enter number of rows and columns");
+                int row = in.nextInt();
+                int column = in.nextInt();
+                
+                int[][] matrix = new int[row][column];
+                
+                for (int i = 0; i < row; i++) {
+                    System.out.println("Enter " + column + " values for row " + i);
+                    for (int j = 0; j < column; j++) {
+                    matrix[i][j] = in.nextInt();
+                    }
+                }
+         
+                System.out.println("Enter scalar to multply with matrix");
+                int scalar = in.nextInt();
+                // multplies scalar to each entry
+                for (int i = 0; i < row; i++) {
+                    for (int j = 0; j < column; j++) {
+                        matrix[i][j] *= scalar;
+                    }
+                }
+        
+                // alignment code
+                int[] columnLength = new int[column];
+        
+                for (int i = 0; i < column; i++) {
+                    String firstEntry = matrix[0][i] + "";
+                    int maxLength = firstEntry.length();
+                    for (int j = 0; j < row; j++) {
+                        String compare = matrix[j][i] + "";
+                        maxLength = Math.max(maxLength, compare.length());
+                    }
+                    columnLength[i] = maxLength;
+                }   
+            
+                for (int i = 0; i < row; i++) {
+                    for (int j = 0; j < column; j++) {
+                    System.out.print(matrix[i][j]);
+                    String placeHolder = matrix[i][j] + "";
+                    int k = 0;
+                        while(placeHolder.length() + k <= columnLength[j]) {
+                            System.out.print(" ");
+                            k++;
+                        }
+                    }
+                    System.out.println();
+                }
+            }
             if(userInput == 2) { //Determinant
                 in = new Scanner(System.in);
                 System.out.println("Press 2 for a 2x2 matrix. Press 3 for a 3x3 matrix");
@@ -84,7 +132,7 @@ public class main {
                         String compare = matrix1[j][i] + "";
                         maxLength = Math.max(maxLength, compare.length());
                     }
-                columnLength[i] = maxLength;
+                    columnLength[i] = maxLength;
                 }   
         
                 for (int i = 0; i < row; i++) {
@@ -141,7 +189,7 @@ public class main {
                         String compare = matrix1[j][i] + "";
                         maxLength = Math.max(maxLength, compare.length());
                     }
-                columnLength[i] = maxLength;
+                    columnLength[i] = maxLength;
                 }   
         
                 for (int i = 0; i < row; i++){
@@ -154,7 +202,7 @@ public class main {
                             k++;
                         }
                     }
-                System.out.println();
+                    System.out.println();
                 }
             }
             if(userInput == 5) {
@@ -208,7 +256,7 @@ public class main {
                         columnLength[i] = maxLength;
                     }   
 
-                    for (int i = 0; i < row1; i++){
+                    for (int i = 0; i < row1; i++) {
                         for (int j = 0; j < column2; j++){
                             System.out.print(product[i][j]);
                             String placeHolder = product[i][j] + "";
@@ -225,55 +273,6 @@ public class main {
                 }
             }
             if(userInput == 6) {
-                System.out.println("Enter number of rows and columns");
-                int row = in.nextInt();
-                int column = in.nextInt();
-                
-                int[][] matrix = new int[row][column];
-                
-                for (int i = 0; i < row; i++) {
-                    System.out.println("Enter " + column + " values for row " + i);
-                    for (int j = 0; j < column; j++) {
-                    matrix[i][j] = in.nextInt();
-                    }
-                }
-         
-                System.out.println("Enter scalar to multply with matrix");
-                int scalar = in.nextInt();
-                // multplies scalar to each entry
-                for (int i = 0; i < row; i++) {
-                    for (int j = 0; j < column; j++) {
-                        matrix[i][j] *= scalar;
-                    }
-                }
-        
-                // alignment code
-                int[] columnLength = new int[column];
-        
-                for (int i = 0; i < column; i++) {
-                    String firstEntry = matrix[0][i] + "";
-                    int maxLength = firstEntry.length();
-                    for (int j = 0; j < row; j++) {
-                        String compare = matrix[j][i] + "";
-                        maxLength = Math.max(maxLength, compare.length());
-                    }
-                    columnLength[i] = maxLength;
-                }   
-            
-                for (int i = 0; i < row; i++) {
-                    for (int j = 0; j < column; j++) {
-                    System.out.print(matrix[i][j]);
-                    String placeHolder = matrix[i][j] + "";
-                    int k = 0;
-                        while(placeHolder.length() + k <= columnLength[j]) {
-                            System.out.print(" ");
-                            k++;
-                        }
-                    }
-                    System.out.println();
-                }
-            }
-            if(userInput == 7) {
                 in = new Scanner(System.in);
                 System.out.println("What are the dimensions of the matrix?");
                 System.out.println("Number of rows: ");
