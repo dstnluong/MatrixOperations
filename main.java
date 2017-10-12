@@ -15,7 +15,7 @@ public class main {
             System.out.println("7) Inverse");
             int userInput = in.nextInt(); // depending on input, move to relevant part of code
             if(userInput == 1) {
-                System.out.println("Enter number of rows and columns");
+                System.out.println("Enter number of rows and columns"); // ipnut
                 int row = in.nextInt();
                 int column = in.nextInt();
                 
@@ -290,7 +290,7 @@ public class main {
                         matrix[i][j] = in.nextDouble();
                     }
                 }
-                double[][] temp = matrix.clone();
+                double[][] temp = matrix.clone(); // put non-zero numbers into the pivot squares
                 for (int i = 0; i < rows; i++) {
                     if (matrix[i][i] == 0) {
                         for (int j = 0; j < rows; j++) {
@@ -302,7 +302,7 @@ public class main {
                         }
                     }
                 }
-                for(int i = 0; i < columns - 1; i++) {
+                for(int i = 0; i < columns - 1; i++) { // solve matrix
                     for(int j = 0 ; j < rows; j++) {
                         double pivot = matrix[j][i] / matrix[i][i];
                         for(int k = 0; k < columns; k++) {
@@ -323,6 +323,68 @@ public class main {
                         System.out.print(matrix[i][j] + " ");
                     }
                     System.out.println("");
+                }
+            }
+            if(userInput == 7) {
+                in = new Scanner(System.in);
+                System.out.println("What is the size of the matrix?");
+                int size = in.nextInt();
+                
+                double [][] matrix = new double [size][size];//build new matrix size depending on input
+                for(int i = 0; i < size; i++) { //input values for matrix
+                    System.out.println(size + "x" + size + ":" + " Enter " + size + " values for row " + (i + 1));
+                    for(int j = 0 ; j < size; j++) {
+                        matrix[i][j] = in.nextDouble();
+                    }
+                }
+                double[][] temp = matrix.clone(); // put non-zero numbers into the pivot squares
+                for (int i = 0; i < size; i++) {
+                    if (matrix[i][i] == 0) {
+                        for (int j = 0; j < size; j++) {
+                            if (matrix [j][i] != 0) {
+                                double tmpRow[] = matrix[i];
+                                matrix[i] = matrix[j];
+                                matrix[j] = tmpRow;
+                            }
+                        }
+                    }
+                }
+                double[][] inverse = new double [size][size * 2];
+                for(int i = 0; i < size; i ++) { //copy matrix to left side
+                    for (int j = 0; j < size; j++) {
+                        inverse[i][j] = matrix[i][j];
+                    }
+                }
+                for(int i = 0; i < size; i++) { //add indentity matrix to the right side
+                        inverse[i][i + size] = 1;
+                }
+                for(int i = 0; i < size;i++) { // put left side into RREF
+                    for(int j = 0 ; j < size; j++) {
+                        double pivot = inverse[j][i] / inverse[i][i];
+                        for(int k = 0; k < size * 2; k++) {
+                            if(i != j) {
+                                inverse[j][k] = inverse[j][k] - inverse[i][k] * pivot;
+                            }
+                        }
+                    }            
+                }
+                for(int i = 0; i < size; i++) {
+                    double pivot = inverse[i][i];
+                    for(int j = 0; j < size * 2; j++) {
+                        inverse[i][j] = inverse[i][j] / pivot;
+                    }
+                }
+                for(int i = 0; i < size; i++) {
+                    for(int j = size; j < size * 2; j++) {
+                        System.out.print(inverse[i][j] + " ");
+                    }
+                    System.out.println("");
+                }
+                for(int i = 0; i < size; i++) {
+                    for(int j = 0; j < size * 2; j++) {
+                        System.out.print(inverse[i][j] + " ");
+                    }
+                System.out.println("");
                 }
             }
             System.out.println("Enter '1' to rerun, or any other key and then enter to end.");//rerun
