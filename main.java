@@ -19,17 +19,17 @@ public class main {
                 int row = in.nextInt();
                 int column = in.nextInt();
                 
-                int[][] matrix = new int[row][column];
+                double[][] matrix = new double[row][column];
                 
                 for (int i = 0; i < row; i++) {
                     System.out.println("Enter " + column + " values for row " + i);
                     for (int j = 0; j < column; j++) {
-                    matrix[i][j] = in.nextInt();
+                    matrix[i][j] = in.nextDouble();
                     }
                 }
          
                 System.out.println("Enter scalar to multply with matrix");
-                int scalar = in.nextInt();
+                double scalar = in.nextDouble();
                 // multplies scalar to each entry
                 for (int i = 0; i < row; i++) {
                     for (int j = 0; j < column; j++) {
@@ -67,11 +67,11 @@ public class main {
                 in = new Scanner(System.in);
                 System.out.println("Press 2 for a 2x2 matrix. Press 3 for a 3x3 matrix");
                 int choice = in.nextInt();
-                int[][] matrix = new int[choice][choice];//build new matrix size depending on input
+                double[][] matrix = new double[choice][choice];//build new matrix size depending on input
                 for(int i = 0; i < choice; i++) { //input values for matrix
                     System.out.println(choice + "x" + choice + ":" + " Enter " + choice + " values for row " + (i + 1));
                     for(int j = 0 ; j < choice; j++) {
-                        matrix[i][j] = in.nextInt();
+                        matrix[i][j] = in.nextDouble();
                     }
                 }
                 if(choice == 2) {//method for finding determinant for 2x2
@@ -99,19 +99,19 @@ public class main {
                 System.out.println("Enter number of rows and columns");
                 int row = in.nextInt();
                 int column = in.nextInt();
-                int[][] matrix1 = new int[row][column];
+                double[][] matrix1 = new double[row][column];
                     for (int i = 0; i < row; i++) {
                         System.out.print("Matrix 1: " + "Enter " + column + " values for row " + i);
                         for (int j = 0; j < column; j++) {
-                            matrix1[i][j] = in.nextInt();
+                            matrix1[i][j] = in.nextDouble();
                         }
                     }
 
-                int[][] matrix2 = new int[row][column];
+                double[][] matrix2 = new double[row][column];
                 for (int i = 0; i < row; i++) {
                     System.out.print("Matrix 2: " + "Enter " + column + " values for row " + i);
                     for (int j = 0; j < column; j++) {
-                        matrix2[i][j] = in.nextInt();
+                        matrix2[i][j] = in.nextDouble();
                     }
                 }
 
@@ -154,21 +154,19 @@ public class main {
                 int column = in.nextInt();
         
                 System.out.println("This program calculates Matrix 1 - Matrix 2");
-                int[][] matrix1 = new int[row][column];
-        
+                double[][] matrix1 = new double[row][column];
                 for (int i = 0; i < row; i++){
                     System.out.print("Matrix 1: " + "Enter " + column + " values for row " + i);
                     for (int j = 0; j < column; j++) {
-                        matrix1[i][j] = in.nextInt();
+                        matrix1[i][j] = in.nextDouble();
                     }
                 }
 
-                int[][] matrix2 = new int[row][column];
-
+                double[][] matrix2 = new double[row][column];
                 for (int i = 0; i < row; i++){
                     System.out.print("Matrix 2: " + "Enter " + column + " values for row " + i);
                     for (int j = 0; j < column; j++) {
-                        matrix2[i][j] = in.nextInt();
+                        matrix2[i][j] = in.nextDouble();
                     }
                 }
 
@@ -180,7 +178,7 @@ public class main {
                 }
 
                 // alignment code
-                int[] columnLength = new int[column];
+                double[] columnLength = new double[column];
         
                 for (int i = 0; i < column; i++){
                     String firstEntry = matrix1[0][i] + "";
@@ -210,29 +208,29 @@ public class main {
                 int row1 = in.nextInt();
                 int column1 = in.nextInt();
 
-                int[][] matrix1 = new int[row1][column1];
+                double[][] matrix1 = new double[row1][column1];
 
                 for (int i = 0; i < row1; i++) {
                     System.out.print("Matrix 1: " + "Enter " + column1 + " values for row " + (i+1));
                     for (int j = 0; j < column1; j++) {
-                        matrix1[i][j] = in.nextInt();
+                        matrix1[i][j] = in.nextDouble();
                     }  
                 }
 
                 System.out.println("Matrix 2: Enter number of rows and columns");
                 int row2 = in.nextInt();
                 int column2 = in.nextInt();
-                int[][] matrix2 = new int[row2][column2];
+                double[][] matrix2 = new double[row2][column2];
 
                 for (int i = 0; i < row2; i++) {
                     System.out.print("Matrix 2: " + "Enter " + column2 + " values for row " + (i + 1));
                     for (int j = 0; j < column2; j++) {
-                        matrix2[i][j] = in.nextInt();
+                        matrix2[i][j] = in.nextDouble();
                     }
                 }
 
                 if (column1 == row2) {
-                    int[][] product = new int[row1][column2]; 
+                    double[][] product = new double[row1][column2]; 
                     for (int i = 0; i < row1; i++) {
                         for (int j = 0; j < column2; j++) {
                         int sum = 0;
