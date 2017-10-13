@@ -318,11 +318,30 @@ public class main {
                         matrix[i][j] = matrix[i][j] / pivot;
                     }
                 }
-                for(int i = 0; i < rows; i++) {
-                    for(int j = 0; j < columns; j++) {
-                        System.out.print(matrix[i][j] + " ");
+                // alignment code
+                int[] columnLength = new int[columns];
+
+                for (int i = 0; i < columns; i++) {
+                    String firstEntry = matrix[0][i] + "";
+                    int maxLength = firstEntry.length();
+                    for (int j = 0; j < rows; j++) {
+                        String compare = matrix[j][i] + "";
+                        maxLength = Math.max(maxLength, compare.length());
                     }
-                    System.out.println("");
+                    columnLength[i] = maxLength;
+                }   
+
+                for (int i = 0; i < rows; i++) {
+                    for (int j = 0; j < columns; j++){
+                        System.out.print(matrix[i][j]);
+                        String placeHolder = matrix[i][j] + "";
+                        int k = 0;
+                        while(placeHolder.length() + k <= columnLength[j]){
+                            System.out.print(" ");
+                            k++;
+                        }
+                    }
+                    System.out.println();
                 }
             }
             if(userInput == 7) {
@@ -374,17 +393,31 @@ public class main {
                         inverse[i][j] = inverse[i][j] / pivot;
                     }
                 }
-                for(int i = 0; i < size; i++) {
-                    for(int j = size; j < size * 2; j++) {
-                        System.out.print(inverse[i][j] + " ");
+
+                // alignment code
+                int[] columnLength = new int[size * 2];
+
+                for (int i = 0; i < size * 2; i++) {
+                    String firstEntry = inverse[0][i] + "";
+                    int maxLength = firstEntry.length();
+                    for (int j = 0; j < size; j++) {
+                        String compare = inverse[j][i] + "";
+                        maxLength = Math.max(maxLength, compare.length());
                     }
-                    System.out.println("");
-                }
-                for(int i = 0; i < size; i++) {
-                    for(int j = 0; j < size * 2; j++) {
-                        System.out.print(inverse[i][j] + " ");
+                    columnLength[i] = maxLength;
+                }   
+
+                for (int i = 0; i < size; i++) {
+                    for (int j = 0; j < size * 2; j++){
+                        System.out.print(inverse[i][j]);
+                        String placeHolder = inverse[i][j] + "";
+                        int k = 0;
+                        while(placeHolder.length() + k <= columnLength[j]){
+                            System.out.print(" ");
+                            k++;
+                        }
                     }
-                System.out.println("");
+                    System.out.println();
                 }
             }
             System.out.println("Enter '1' to rerun, or any other key and then enter to end.");//rerun
