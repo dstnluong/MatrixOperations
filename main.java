@@ -22,7 +22,7 @@ public class main {
                 double[][] matrix = new double[row][column];
                 
                 for (int i = 0; i < row; i++) {
-                    System.out.println("Enter " + column + " values for row " + i);
+                    System.out.println("Enter " + column + " values for row " + (i + 1));
                     for (int j = 0; j < column; j++) {
                     matrix[i][j] = in.nextDouble();
                     }
@@ -101,7 +101,7 @@ public class main {
                 int column = in.nextInt();
                 double[][] matrix1 = new double[row][column];
                     for (int i = 0; i < row; i++) {
-                        System.out.print("Matrix 1: " + "Enter " + column + " values for row " + i);
+                        System.out.print("Matrix 1: " + "Enter " + column + " values for row " + (i + 1));
                         for (int j = 0; j < column; j++) {
                             matrix1[i][j] = in.nextDouble();
                         }
@@ -109,7 +109,7 @@ public class main {
 
                 double[][] matrix2 = new double[row][column];
                 for (int i = 0; i < row; i++) {
-                    System.out.print("Matrix 2: " + "Enter " + column + " values for row " + i);
+                    System.out.print("Matrix 2: " + "Enter " + column + " values for row " + (i + 1));
                     for (int j = 0; j < column; j++) {
                         matrix2[i][j] = in.nextDouble();
                     }
@@ -156,7 +156,7 @@ public class main {
                 System.out.println("This program calculates Matrix 1 - Matrix 2");
                 double[][] matrix1 = new double[row][column];
                 for (int i = 0; i < row; i++){
-                    System.out.print("Matrix 1: " + "Enter " + column + " values for row " + i);
+                    System.out.print("Matrix 1: " + "Enter " + column + " values for row " + (i + 1));
                     for (int j = 0; j < column; j++) {
                         matrix1[i][j] = in.nextDouble();
                     }
@@ -164,7 +164,7 @@ public class main {
 
                 double[][] matrix2 = new double[row][column];
                 for (int i = 0; i < row; i++){
-                    System.out.print("Matrix 2: " + "Enter " + column + " values for row " + i);
+                    System.out.print("Matrix 2: " + "Enter " + column + " values for row " + (i + 1));
                     for (int j = 0; j < column; j++) {
                         matrix2[i][j] = in.nextDouble();
                     }
@@ -406,7 +406,7 @@ public class main {
                 }   
 
                 for (int i = 0; i < size; i++) {
-                    for (int j = 0; j < size * 2; j++){
+                    for (int j = size; j < size * 2; j++){
                         System.out.print(inverse[i][j]);
                         String placeHolder = inverse[i][j] + "";
                         int k = 0;
